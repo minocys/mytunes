@@ -6,6 +6,12 @@ var PlayerView = Backbone.View.extend({
   el: '<audio controls autoplay />',
 
   initialize: function() {
+    //create reference to current song
+    var current = this;
+    //jquery handles html5 video event 'ended'
+    this.$el.on('ended', function(){
+      current.model.ended();
+    });
   },
 
   setSong: function(song){
